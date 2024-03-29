@@ -38,10 +38,10 @@ export default class CheckboxSelectAll extends Controller {
 
   toggle(e: Event): void {
     e.preventDefault()
-
-    this.checkboxTargets.forEach((checkbox) => {
+    const target = e.target as HTMLInputElement;
+    this.group(target.dataset.checkboxSelectAllGroup).forEach((checkbox) => {
       // @ts-ignore
-      checkbox.checked = e.target.checked
+      checkbox.checked = target.checked
       this.triggerInputEvent(checkbox)
     })
   }
