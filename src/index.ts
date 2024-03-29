@@ -47,17 +47,25 @@ export default class CheckboxSelectAll extends Controller {
   }
 
   refresh(): void {
-    const checkboxesCount = this.checkboxTargets.length
-    const checkboxesCheckedCount = this.checked.length
+    this.checkboxAllTargets.forEach((allTarget) => {
+      const group = allTarget.dataset.checkboxSelectAllGroup
+      const checkboxesCount = this.group(group).length
+      const checkboxesCheckedCount = this.checkedGroup(group).length
 
-    this.checkboxAllTargets[0].checked = checkboxesCheckedCount > 0
-    this.checkboxAllTargets[0].indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
+      allTarget.checked = checkboxesCheckedCount > 0
+      allTarget.indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
+    })
+    
   }
 
   triggerInputEvent(checkbox: HTMLInputElement): void {
     const event = new Event("input", { bubbles: false, cancelable: true })
 
     checkbox.dispatchEvent(event)
+  }
+
+  group(groupName: String|undefined): HTMLInputElement[] {
+    return this.checkboxTargets.filter((checkbox) => checkbox.dataset.checkboxSelectAllGroup === groupName)
   }
 
   checkedGroup(groupName: String|undefined): HTMLInputElement[] {
