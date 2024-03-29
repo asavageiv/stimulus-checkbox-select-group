@@ -3,7 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 export default class CheckboxSelectAll extends Controller {
   hasCheckboxAllTarget: boolean
   checkboxTargets: HTMLInputElement[]
-  checkboxAllTarget: HTMLInputElement
+  checkboxAllTargets: HTMLInputElement[]
 
   static targets: string[] = ["checkboxAll", "checkbox"]
 
@@ -50,8 +50,8 @@ export default class CheckboxSelectAll extends Controller {
     const checkboxesCount = this.checkboxTargets.length
     const checkboxesCheckedCount = this.checked.length
 
-    this.checkboxAllTarget.checked = checkboxesCheckedCount > 0
-    this.checkboxAllTarget.indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
+    this.checkboxAllTargets[0].checked = checkboxesCheckedCount > 0
+    this.checkboxAllTargets[0].indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
   }
 
   triggerInputEvent(checkbox: HTMLInputElement): void {
