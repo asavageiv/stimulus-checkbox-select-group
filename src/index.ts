@@ -60,8 +60,12 @@ export default class CheckboxSelectAll extends Controller {
     checkbox.dispatchEvent(event)
   }
 
+  checkedGroup(groupName: String|undefined): HTMLInputElement[] {
+    return this.checkboxTargets.filter((checkbox) => checkbox.checked && checkbox.dataset.checkboxSelectAllGroup === groupName)
+  }
+
   get checked(): HTMLInputElement[] {
-    return this.checkboxTargets.filter((checkbox) => checkbox.checked)
+    return this.checkedGroup(undefined)
   }
 
   get unchecked(): HTMLInputElement[] {
