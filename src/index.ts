@@ -64,11 +64,15 @@ export default class CheckboxSelectAll extends Controller {
     return this.checkboxTargets.filter((checkbox) => checkbox.checked && checkbox.dataset.checkboxSelectAllGroup === groupName)
   }
 
+  uncheckedGroup(groupName: String|undefined): HTMLInputElement[] {
+    return this.checkboxTargets.filter((checkbox) => !checkbox.checked && checkbox.dataset.checkboxSelectAllGroup === groupName)
+  }
+
   get checked(): HTMLInputElement[] {
     return this.checkedGroup(undefined)
   }
 
   get unchecked(): HTMLInputElement[] {
-    return this.checkboxTargets.filter((checkbox) => !checkbox.checked)
+    return this.uncheckedGroup(undefined)
   }
 }
