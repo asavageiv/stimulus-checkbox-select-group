@@ -55,22 +55,22 @@ describe("with multiple groups", () => {
   beforeEach((): void => {
     document.body.innerHTML = `
       <form data-controller="checkbox-select-all">
-        <input id="checkbox-select-all-1" type="checkbox" data-checkbox-select-all-target="checkboxAll" data-checkbox-select-all-group="1" />
-        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group="1" />
-        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group="1" checked="checked" />
-        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group="1" />
+        <input id="checkbox-select-all-1" type="checkbox" data-checkbox-select-all-target="checkboxAll" data-checkbox-select-all-group-name="1" />
+        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group-name="1" />
+        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group-name="1" checked="checked" />
+        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group-name="1" />
         
-        <input id="checkbox-select-all-2" type="checkbox" data-checkbox-select-all-target="checkboxAll" data-checkbox-select-all-group="2" />
-        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group="2" />
-        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group="2" checked="checked" />
-        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group="2" />
+        <input id="checkbox-select-all-2" type="checkbox" data-checkbox-select-all-target="checkboxAll" data-checkbox-select-all-group-name="2" />
+        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group-name="2" />
+        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group-name="2" checked="checked" />
+        <input type="checkbox" data-checkbox-select-all-target="checkbox" data-checkbox-select-all-group-name="2" />
       </form>
     `
   })
 
   describe("#toggle", () => {
     function checkedTargetsForGroup(groupNumber: number): NodeList {
-      return document.querySelectorAll(`[data-checkbox-select-all-target='checkbox'][data-checkbox-select-all-group='${groupNumber}']:checked`)
+      return document.querySelectorAll(`[data-checkbox-select-all-target='checkbox'][data-checkbox-select-all-group-name='${groupNumber}']:checked`)
     }
 
     it("should select all checkboxes in the group", (): void => {

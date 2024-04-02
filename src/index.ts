@@ -68,7 +68,7 @@ export default class CheckboxSelectAll extends Controller {
   }
 
   groupName(checkbox: HTMLInputElement): String|undefined {
-    return checkbox.dataset.checkboxSelectAllGroup
+    return checkbox.dataset.checkboxSelectAllGroupName
   }
 
   triggerInputEvent(checkbox: HTMLInputElement): void {
