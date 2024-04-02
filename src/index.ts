@@ -38,7 +38,7 @@ export default class CheckboxSelectAll extends Controller {
   toggle(e: Event): void {
     e.preventDefault()
     const target = e.target as HTMLInputElement;
-    this.group(target.dataset.checkboxSelectAllGroup).forEach((checkbox) => {
+    this.selectGroupTargets(target.dataset.checkboxSelectAllGroup).forEach((checkbox) => {
       // @ts-ignore
       checkbox.checked = target.checked
       this.triggerInputEvent(checkbox)
@@ -46,15 +46,14 @@ export default class CheckboxSelectAll extends Controller {
   }
 
   refresh(): void {
-    this.checkboxAllTargets.forEach((allTarget) => {
-      const group = allTarget.dataset.checkboxSelectAllGroup
-      const checkboxesCount = this.group(group).length
-      const checkboxesCheckedCount = this.checkedGroup(group).length
+    this.checkboxAllTargets.forEach((selectGroupCheckbox) => {
+      const groupName = selectGroupCheckbox.dataset.checkboxSelectAllGroup
+      const checkboxesCount = this.selectGroupTargets(groupName).length
+      const checkboxesCheckedCount = this.checkedGroup(groupName).length
 
-      allTarget.checked = checkboxesCheckedCount > 0
-      allTarget.indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
+      selectGroupCheckbox.checked = checkboxesCheckedCount > 0
+      selectGroupCheckbox.indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
     })
-    
   }
 
   triggerInputEvent(checkbox: HTMLInputElement): void {
@@ -63,16 +62,16 @@ export default class CheckboxSelectAll extends Controller {
     checkbox.dispatchEvent(event)
   }
 
-  group(groupName: String|undefined): HTMLInputElement[] {
+  selectGroupTargets(groupName: String|undefined): HTMLInputElement[] {
     return this.checkboxTargets.filter((checkbox) => checkbox.dataset.checkboxSelectAllGroup === groupName)
   }
 
   checkedGroup(groupName: String|undefined): HTMLInputElement[] {
-    return this.checkboxTargets.filter((checkbox) => checkbox.checked && checkbox.dataset.checkboxSelectAllGroup === groupName)
+    return this.selectGroupTargets(groupName).filter((checkbox) => checkbox.checked)
   }
 
   uncheckedGroup(groupName: String|undefined): HTMLInputElement[] {
-    return this.checkboxTargets.filter((checkbox) => !checkbox.checked && checkbox.dataset.checkboxSelectAllGroup === groupName)
+    return this.selectGroupTargets(groupName).filter((checkbox) => !checkbox.checked)
   }
 
   get checked(): HTMLInputElement[] {
