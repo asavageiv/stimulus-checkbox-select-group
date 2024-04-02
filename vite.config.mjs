@@ -13,7 +13,7 @@ export default defineConfig(({ mode }) => {
     build: {
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
-        name: "StimulusCheckboxSelectAll",
+        name: "StimulusCheckboxSelectGroup",
         fileName: "stimulus-checkbox-select-all",
       },
       rollupOptions: {

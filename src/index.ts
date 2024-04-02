@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
-export default class CheckboxSelectAll extends Controller {
+export default class CheckboxSelectGroup extends Controller {
   checkboxTargets: HTMLInputElement[]
   checkboxAllTargets: HTMLInputElement[]
 
@@ -68,7 +68,7 @@ export default class CheckboxSelectAll extends Controller {
   }
 
   groupName(checkbox: HTMLInputElement): String|undefined {
-    return checkbox.dataset.checkboxSelectAllGroupName
+    return checkbox.dataset.checkboxSelectGroupName
   }
 
   triggerInputEvent(checkbox: HTMLInputElement): void {
