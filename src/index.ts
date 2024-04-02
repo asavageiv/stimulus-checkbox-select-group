@@ -38,8 +38,7 @@ export default class CheckboxSelectAll extends Controller {
   toggle(e: Event): void {
     e.preventDefault()
     const selectGroupCheckbox = e.target as HTMLInputElement;
-    this.selectGroupTargets(this.groupName(selectGroupCheckbox)).forEach((checkbox) => {
-      // @ts-ignore
+    this.groupCheckboxes(selectGroupCheckbox).forEach((checkbox) => {
       checkbox.checked = selectGroupCheckbox.checked
       this.triggerInputEvent(checkbox)
     })
@@ -47,13 +46,25 @@ export default class CheckboxSelectAll extends Controller {
 
   refresh(): void {
     this.checkboxAllTargets.forEach((selectGroupCheckbox) => {
-      const groupName = this.groupName(selectGroupCheckbox)
-      const checkboxesCount = this.selectGroupTargets(groupName).length
-      const checkboxesCheckedCount = this.checkedGroup(groupName).length
-
-      selectGroupCheckbox.checked = checkboxesCheckedCount > 0
-      selectGroupCheckbox.indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
+      selectGroupCheckbox.checked = this.isAtLeastOneBoxChecked(selectGroupCheckbox)
+      selectGroupCheckbox.indeterminate = this.areSomeButNotAllBoxesChecked(selectGroupCheckbox)
     })
+  }
+
+  isAtLeastOneBoxChecked(selectGroupCheckbox: HTMLInputElement): boolean {
+    return this.groupCheckboxes(selectGroupCheckbox).filter((c) => c.checked).length > 0
+  }
+
+  areSomeButNotAllBoxesChecked(selectGroupCheckbox: HTMLInputElement): boolean {
+    const checkboxes = this.groupCheckboxes(selectGroupCheckbox);
+    const checkedBoxesCount = checkboxes.filter((c) => c.checked).length
+
+    return (0 < checkedBoxesCount && checkedBoxesCount < checkboxes.length)
+  }
+
+  groupCheckboxes(selectGroupCheckbox: HTMLInputElement): HTMLInputElement[] {
+    const groupName = this.groupName(selectGroupCheckbox)
+    return this.checkboxTargets.filter((c) => this.groupName(c) === groupName)
   }
 
   groupName(checkbox: HTMLInputElement): String|undefined {
@@ -64,25 +75,5 @@ export default class CheckboxSelectAll extends Controller {
     const event = new Event("input", { bubbles: false, cancelable: true })
 
     checkbox.dispatchEvent(event)
-  }
-
-  selectGroupTargets(groupName: String|undefined): HTMLInputElement[] {
-    return this.checkboxTargets.filter((checkbox) => this.groupName(checkbox) === groupName)
-  }
-
-  checkedGroup(groupName: String|undefined): HTMLInputElement[] {
-    return this.selectGroupTargets(groupName).filter((checkbox) => checkbox.checked)
-  }
-
-  uncheckedGroup(groupName: String|undefined): HTMLInputElement[] {
-    return this.selectGroupTargets(groupName).filter((checkbox) => !checkbox.checked)
-  }
-
-  get checked(): HTMLInputElement[] {
-    return this.checkedGroup(undefined)
-  }
-
-  get unchecked(): HTMLInputElement[] {
-    return this.uncheckedGroup(undefined)
   }
 }

@@ -98,7 +98,6 @@ describe("with multiple groups", () => {
     })
   })
 
-  // not meaningful for targets with a defined group number
   describe("#refresh", () => {
     it("change the checkboxAll state", (): void => {
       const toggleCheckbox1: HTMLInputElement = document.querySelector("#checkbox-select-all-1")
