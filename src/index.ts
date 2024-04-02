@@ -37,23 +37,27 @@ export default class CheckboxSelectAll extends Controller {
 
   toggle(e: Event): void {
     e.preventDefault()
-    const target = e.target as HTMLInputElement;
-    this.selectGroupTargets(target.dataset.checkboxSelectAllGroup).forEach((checkbox) => {
+    const selectGroupCheckbox = e.target as HTMLInputElement;
+    this.selectGroupTargets(this.groupName(selectGroupCheckbox)).forEach((checkbox) => {
       // @ts-ignore
-      checkbox.checked = target.checked
+      checkbox.checked = selectGroupCheckbox.checked
       this.triggerInputEvent(checkbox)
     })
   }
 
   refresh(): void {
     this.checkboxAllTargets.forEach((selectGroupCheckbox) => {
-      const groupName = selectGroupCheckbox.dataset.checkboxSelectAllGroup
+      const groupName = this.groupName(selectGroupCheckbox)
       const checkboxesCount = this.selectGroupTargets(groupName).length
       const checkboxesCheckedCount = this.checkedGroup(groupName).length
 
       selectGroupCheckbox.checked = checkboxesCheckedCount > 0
       selectGroupCheckbox.indeterminate = checkboxesCheckedCount > 0 && checkboxesCheckedCount < checkboxesCount
     })
+  }
+
+  groupName(checkbox: HTMLInputElement): String|undefined {
+    return checkbox.dataset.checkboxSelectAllGroup
   }
 
   triggerInputEvent(checkbox: HTMLInputElement): void {
@@ -63,7 +67,7 @@ export default class CheckboxSelectAll extends Controller {
   }
 
   selectGroupTargets(groupName: String|undefined): HTMLInputElement[] {
-    return this.checkboxTargets.filter((checkbox) => checkbox.dataset.checkboxSelectAllGroup === groupName)
+    return this.checkboxTargets.filter((checkbox) => this.groupName(checkbox) === groupName)
   }
 
   checkedGroup(groupName: String|undefined): HTMLInputElement[] {
