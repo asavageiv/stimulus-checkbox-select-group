@@ -1,7 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 
 export default class CheckboxSelectAll extends Controller {
-  hasCheckboxAllTarget: boolean
   checkboxTargets: HTMLInputElement[]
   checkboxAllTargets: HTMLInputElement[]
 
