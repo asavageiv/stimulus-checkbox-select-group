@@ -1,5 +1,5 @@
 {
-  "name": "@stimulus-components/checkbox-select-all",
+  "name": "@stimulus-components/checkbox-select-group",
   "version": "6.0.0",
   "description": "A Stimulus controller for managing checkbox lists.",
   "keywords": [
