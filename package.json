@@ -1,7 +1,7 @@
 {
-  "name": "@stimulus-components/checkbox-select-all",
+  "name": "@stimulus-components/checkbox-select-group",
   "version": "6.0.0",
-  "description": "A Stimulus controller for managing checkbox lists.",
+  "description": "A Stimulus controller for checkboxes grouped with multiple other checkboxes.",
   "keywords": [
     "stimulus",
     "stimulusjs",
@@ -9,19 +9,19 @@
     "checkbox",
     "checkbox-select-all"
   ],
-  "repository": "git@github.com:stimulus-components/stimulus-checkbox-select-all.git",
+  "repository": "git@github.com:asavageiv/stimulus-checkbox-select-group.git",
   "bugs": {
-    "url": "https://github.com/stimulus-components/stimulus-checkbox-select-all/issues"
+    "url": "https://github.com/stimulus-components/stimulus-checkbox-select-group/issues"
   },
   "author": "Guillaume Briday <guillaumebriday@gmail.com>",
   "license": "MIT",
-  "homepage": "https://github.com/stimulus-components/stimulus-checkbox-select-all",
+  "homepage": "https://github.com/stimulus-components/stimulus-checkbox-select-group",
   "private": false,
   "publishConfig": {
     "access": "public"
   },
-  "main": "dist/stimulus-checkbox-select-all.umd.js",
-  "module": "dist/stimulus-checkbox-select-all.mjs",
+  "main": "dist/stimulus-checkbox-select-group.umd.js",
+  "module": "dist/stimulus-checkbox-select-group.mjs",
   "types": "dist/types/index.d.ts",
   "scripts": {
     "lint": "tsc --noEmit && eslint --ext .js,.mjs,.ts . && prettier . --check",

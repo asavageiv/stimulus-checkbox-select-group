@@ -1,10 +1,10 @@
 # Stimulus Checkbox Select All
 
-[![](https://img.shields.io/npm/dt/stimulus-checkbox-select-all.svg)](https://www.npmjs.com/package/stimulus-checkbox-select-all)
-[![](https://img.shields.io/npm/v/stimulus-checkbox-select-all.svg)](https://www.npmjs.com/package/stimulus-checkbox-select-all)
-[![](https://github.com/stimulus-components/stimulus-checkbox-select-all/workflows/Lint/badge.svg)](https://github.com/stimulus-components/stimulus-checkbox-select-all)
-[![](https://github.com/stimulus-components/stimulus-checkbox-select-all/workflows/Test/badge.svg)](https://github.com/stimulus-components/stimulus-checkbox-select-all)
-[![](https://img.shields.io/github/license/stimulus-components/stimulus-checkbox-select-all.svg)](https://github.com/stimulus-components/stimulus-checkbox-select-all)
+[![](https://img.shields.io/npm/dt/stimulus-checkbox-select-group.svg)](https://www.npmjs.com/package/stimulus-checkbox-select-group)
+[![](https://img.shields.io/npm/v/stimulus-checkbox-select-group.svg)](https://www.npmjs.com/package/stimulus-checkbox-select-group)
+[![](https://github.com/stimulus-components/stimulus-checkbox-select-group/workflows/Lint/badge.svg)](https://github.com/stimulus-components/stimulus-checkbox-select-group)
+[![](https://github.com/stimulus-components/stimulus-checkbox-select-group/workflows/Test/badge.svg)](https://github.com/stimulus-components/stimulus-checkbox-select-group)
+[![](https://img.shields.io/github/license/stimulus-components/stimulus-checkbox-select-group.svg)](https://github.com/stimulus-components/stimulus-checkbox-select-group)
 
 ## Getting started
 
@@ -12,7 +12,7 @@ A Stimulus controller for managing checkbox lists.
 
 ## 📚 Documentation
 
-See [stimulus-checkbox-select-all documentation](https://www.stimulus-components.com/docs/stimulus-checkbox-select-all/).
+See [stimulus-checkbox-select-group documentation](https://www.stimulus-components.com/docs/stimulus-checkbox-select-group/).
 
 ## 👷‍♂️ Contributing
 
