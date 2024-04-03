@@ -14,7 +14,7 @@ export default defineConfig(({ mode }) => {
       lib: {
         entry: resolve(__dirname, "src/index.ts"),
         name: "StimulusCheckboxSelectGroup",
-        fileName: "stimulus-checkbox-select-all",
+        fileName: "stimulus-checkbox-select-group",
       },
       rollupOptions: {
         external: ["@hotwired/stimulus"],

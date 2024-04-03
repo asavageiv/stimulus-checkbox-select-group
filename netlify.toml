@@ -3,7 +3,7 @@
   command="yarn prod"
 
 [[redirects]]
-  from = "https://stimulus-checkbox-select-all.netlify.app/*"
-  to = "https://stimulus-checkbox-select-all.stimulus-components.com/:splat"
+  from = "https://stimulus-checkbox-select-group.netlify.app/*"
+  to = "https://stimulus-checkbox-select-group.stimulus-components.com/:splat"
   status = 301
   force = true
